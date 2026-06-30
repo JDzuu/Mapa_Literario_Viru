@@ -1,0 +1,171 @@
+/* Menú accesible de zonas */
+.menu-zonas {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 850;
+  max-width: min(92vw, 440px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Botón translúcido sobre el mapa */
+.menu-zonas-boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(28, 23, 20, 0.78);
+  color: var(--crema);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  padding: 11px 20px;
+  border-radius: 26px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  box-shadow: var(--sombra-media);
+  transition: var(--transicion);
+}
+.menu-zonas-boton:hover {
+  background: rgba(28, 23, 20, 0.95);
+}
+.menu-zonas-flecha {
+  font-size: 0.7rem;
+}
+
+/* Panel desplegable con animación de entrada */
+.menu-zonas-panel {
+  margin-top: 12px;
+  width: 100%;
+  background: rgba(245, 236, 225, 0.97);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-fuerte);
+  padding: 18px;
+  max-height: 74vh;
+  overflow-y: auto;
+  animation: menuAparece 0.25s ease;
+}
+
+@keyframes menuAparece {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-zonas-ayuda {
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+  margin-bottom: 14px;
+}
+
+/* Grupo de tarjetas por región */
+.menu-grupo {
+  margin-bottom: 18px;
+}
+.menu-grupo:last-child {
+  margin-bottom: 0;
+}
+
+.menu-grupo-titulo {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  color: var(--acento);
+  margin-bottom: 10px;
+}
+
+/* Grilla de tarjetas */
+.menu-tarjetas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.menu-tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+  border: 1.5px solid var(--crema-oscura);
+  border-radius: 12px;
+  padding: 14px;
+  transition: var(--transicion);
+}
+.menu-tarjeta:hover {
+  border-color: var(--oro);
+  box-shadow: var(--sombra-media);
+  transform: translateY(-2px);
+}
+
+.menu-tarjeta-etiqueta {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--tinta-suave);
+}
+.menu-tarjeta-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.15rem;
+}
+.menu-tarjeta-leyenda {
+  font-size: 0.82rem;
+  color: var(--acento);
+}
+.menu-tarjeta-intro {
+  flex: 1;
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+}
+
+/* margin-top: auto empuja el botón al fondo de cada tarjeta */
+.menu-tarjeta-boton {
+  margin-top: auto;
+  background: var(--tinta);
+  color: var(--crema);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transicion);
+}
+.menu-tarjeta-boton:hover {
+  background: var(--acento);
+}
+
+/* Responsive móvil */
+@media (max-width: 640px) {
+  .menu-zonas {
+    top: 14px;
+    right: 14px;
+  }
+  .menu-zonas-boton {
+    padding: 8px 13px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 520px) {
+  .menu-zonas {
+    left: 12px;
+    right: 12px;
+    max-width: none;
+    align-items: stretch;
+  }
+  .menu-zonas-boton {
+    align-self: flex-end;
+  }
+  .menu-tarjetas {
+    grid-template-columns: 1fr;
+  }
+}

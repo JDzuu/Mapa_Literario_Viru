@@ -1,0 +1,103 @@
+/* Variables globales */
+:root {
+  --tinta: #1c1714;
+  --tinta-suave: #3a302a;
+  --crema: #f5ece1;
+  --crema-oscura: #e7d9c5;
+  --oro: #d4af37;
+  --oro-claro: #e8c75a;
+  --acento: #c0392b;
+  --mar: #0d1b24;
+
+  --fuente-titulo: 'Georgia', 'Cambria', 'Times New Roman', serif;
+  --fuente-texto: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+  --sombra-media: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --sombra-fuerte: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --radio: 14px;
+  --transicion: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Reset base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--mar);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* El mapa ocupa toda la pantalla; el scroll vive dentro de PaginaZona */
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Título flotante sobre el mapa */
+.app-titulo {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 800;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
+  padding: 0 16px;
+  max-width: 90vw;
+}
+
+.app-titulo h1 {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.app-titulo p {
+  font-size: clamp(0.82rem, 1.6vw, 1rem);
+  opacity: 0.92;
+  margin-top: 2px;
+}
+
+/* Responsive móvil: el título baja para no chocar con los botones flotantes */
+@media (max-width: 640px) {
+  .app-titulo {
+    top: 70px;
+    max-width: 100vw;
+    width: 100vw;
+  }
+  .app-titulo h1 {
+    font-size: 1.15rem;
+    text-wrap: balance;
+  }
+  .app-titulo p {
+    font-size: 0.78rem;
+  }
+}
+
+/* Accesibilidad: respeta prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
